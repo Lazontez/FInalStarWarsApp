@@ -61,22 +61,17 @@ var survey_data = [
 
 ]
 
-
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //specify the port we will use
-var PORT = process.env.port || 8080
+var PORT = process.env.port || 8075
 
 app.get('/', function (req, res) {
 
-    res.send(html)
     res.header("Content-type", "text/html")
     res.sendFile(path.join(__dirname, './public/home.html'));
 });
-
-
 //when a get method on the url: /survey is called
 app.get('/survey', function (req, res) {
     res.header("Content-type", "text/html")
@@ -91,24 +86,52 @@ app.get("/api/survey", function (req, res) {
 });
 //when a post method is called 
 app.post('/api/survey', function (req, res) {
-    survey_data.push(req.body)
-    findMatch(req.body)
+    // survey_data.push(req.body)
+    res.send(findMatch(req.body))
 
 })
 app.get('/api/survey', function (request, response) {
     response.json(survey_data)
 });
+function parseMatchArr(array) {
+    // var data = ["array","1","3","2","2"]
+    var parsedData = []
+    for (x = 1; x < array.length; x++) {
+        parsedData.push(parseFloat(array[x]));
+    };
+    if (x == array.length) {
+        return parsedData
+    }
 
-function findMatch(data){
-    for(var j=0;j<survey_data.length;j++){
-        console.log(survey_data[j]);
-        console.log(data)
+}
+function findMatch(data) {
+    var dataTotal = 0;
+    var surveyTotal = 0;
+    var match = []
+    var inTheHole=0
+    for (var j = 0; j < survey_data.length; j++) {
+        var differance = 0;
+        var dataArr = Object.values(data);
+        var survey_dataArr = Object.values(survey_data);
+
+        //run a loop through the dataArr and add the values of the array up to a variable called dataTotal
+        //add up the value of the current surveydataarr to see how much the value is then subtract it from the dataTotalq
+        // console.log(parseMatchArr(dataArr).reduce((a, b) => a + b, 0));
+        if (parseMatchArr(dataArr).reduce((a, b) => a - b, 0) - parseMatchArr(Object.values(survey_data[j])).reduce((a, b) => a - b, 0) > surveyTotal) {
+            dataTotal = parseMatchArr(dataArr).reduce((a, b) => a - b, 0) - parseMatchArr(Object.values(survey_data[j])).reduce((a, b) => a - b, 0);
+            inTheHole++
+            if(inTheHole==2){
+                console.log("You Matched with "+survey_data[j].User_Name)
+            }
+            
+
+        }
+
+        //run a for loop through the survey data
+        //and compare the answers given from the response
+        //if th
 
     }
-    //run a for loop through the survey data
-    //and compare the answers given from the response
-    //if th
-
 }
 //any other get method call to the survey
 app.get('*', function (req, res) {

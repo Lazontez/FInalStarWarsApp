@@ -167,13 +167,13 @@
         //store the current url in a variable called currentUrl
         var currentURL = window.location.origin;
         console.log(currentURL + "/api/survey")
-        
+
         // Clear the form when submitting
         $('#userName').val("");
 
         // tst(currentURL, answers)
         $.post(currentURL + "/api/survey", answers
-        ).done(function( data ) {
+        ).done(function (data) {
             console.log("survey completed");
             console.log(data)
         });
