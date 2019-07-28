@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+    <link href="https://fonts.googleapis.com/css?family=Arvo|PT+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arvo', serif;
+
+        }
+
+        #survey-questions li {
+            /* list-style: none; */
+            font-family: 'PT Sans', sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+            find a friend
+        </a>
+    </nav>
+
+    <div class="container">
+
+        <div id="mainContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="headline">Survey</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div id="survey-questions">
+                    <ol>
+                        <li>
+                            <div class="input-group" id="name">
+
+                                <input type="text" aria-label="Name" placeholder="What is your name?"
+                                    class="form-control" id="userName">
+                            </div>
+                        </li>
+                        <li><label for="inputState">Question 1</label>
+                            <select id="quesOne">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select>
+                        </li>
+                        <li><label for="inputState">Question 2</label>
+                            <select id="quesTwo">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select>
+                        </li>
+                        <li><label for="inputState">Question 3</label>
+                            <select id="quesThree">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                        <li><label for="inputState">Question 4</label>
+                            <select id="quesFour">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                        <li><label for="inputState">Question 5</label>
+                            <select id="quesFive">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                        <li><label for="inputState">Question 6</label>
+                            <select id="quesSix">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                        <li><label for="inputState">Question 7</label>
+                            <select id="quesSeven">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                        <li><label for="inputState">Question 8</label>
+                            <select id="quesEight">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                        <li><label for="inputState">Question 9</label>
+                            <select id="quesNine">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                        <li><label for="inputState">Question 10</label>
+                            <select id="quesTen">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="3">5</option>
+                            </select></li>
+                    </ol>
+                    <button id="submit">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+</body>
+<script type="text/javascript">
+    $("#submit").on("click", function () {
+
+        //Store the value given by the user in a object named answers
+        var answers = {
+            User_Name: $("#userName").val(),
+            QuestionOne: $('#quesOne').find(":selected").text(),
+            QuestionTwo: $('#quesTwo').find(":selected").text(),
+            QuestionThree: $('#quesThree').find(":selected").text(),
+            QuestionFour: $('#quesFour').find(":selected").text(),
+            QuestionFive: $('#quesFive').find(":selected").text(),
+            QuestionSix: $('#quesSix').find(":selected").text(),
+            QuestionSeven: $('#quesSeven').find(":selected").text(),
+            QuestionEight: $('#quesEight').find(":selected").text(),
+            QuestionNine: $('#quesNine').find(":selected").text(),
+            QuestionTen: $('#quesTen').find(":selected").text()
+        };
+        //store the current url in a variable called currentUrl
+        var currentURL = window.location.origin;
+        console.log(currentURL + "/api/survey")
+        
+        // Clear the form when submitting
+        $('#userName').val("");
+
+        // tst(currentURL, answers)
+        $.post(currentURL + "/api/survey", answers
+        ).done(function( data ) {
+            console.log("survey completed");
+            console.log(data)
+        });
+
+
+    })
+</script>
+
+</html>
