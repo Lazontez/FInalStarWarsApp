@@ -81,9 +81,9 @@ app.get('/survey', function (req, res) {
 
 })
 //when a get method is called
-app.get("/api/survey", function (req, res) {
-    res.send(survey_data);
-});
+// app.get("/api/survey", function (req, res) {
+//     res.send(survey_data);
+// });
 //when a post method is called 
 app.post('/api/survey', function (req, res) {
     // survey_data.push(req.body)
@@ -121,7 +121,9 @@ function findMatch(data) {
             dataTotal = parseMatchArr(dataArr).reduce((a, b) => a - b, 0) - parseMatchArr(Object.values(survey_data[j])).reduce((a, b) => a - b, 0);
             inTheHole++
             if(inTheHole==2){
-                console.log("You Matched with "+survey_data[j].User_Name)
+                console.log("You Matched with "+ survey_data[j].User_Name)
+                return survey_data[j]
+
             }
             
 
