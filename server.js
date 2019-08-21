@@ -65,7 +65,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //specify the port we will use
-var PORT = process.env.port || 8075
+var PORT = process.env.PORT || 8075
 
 app.get('/', function (req, res) {
 
